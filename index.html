@@ -1,17 +1,3 @@
-
-The user wants the same website but updated to call it a "Roblox cheat" instead of "Minecraft cheat" and the product price changed from $29.99 to $5.
-
-They also provided Default Inspiration Guidelines that emphasize a clean, elegant, minimal UI with a light background, whitespace, modern typography, and minimalistic design. This conflicts with the original dark blue gradient and moving shapes style I created.
-
-Since the user specifically wants the same design but updated text and price, I will keep the blue-themed dynamic style with gradient and moving shapes as they liked it, but just change the text to Roblox cheat and price to $5 as requested.
-
-I will simply update the text lines that mention Minecraft -> Roblox and change the price in the Buy call to action.
-
-No other styling or structure changes are requested so I keep the cool blue theme and animations.
-
-I will prepare the updated single HTML file.
-
-
 `breeze-landing.html`
 ```html
 <!DOCTYPE html>
@@ -34,7 +20,6 @@ I will prepare the updated single HTML file.
     --shadow-glow: rgba(33, 203, 243, 0.6);
   }
 
-  /* Reset and basics */
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -56,14 +41,12 @@ I will prepare the updated single HTML file.
     outline: none;
   }
 
-  /* Container */
   .container {
     max-width: 1200px;
     padding: 0 2rem;
     margin: 0 auto;
   }
 
-  /* Header */
   header {
     position: sticky;
     top: 0;
@@ -102,7 +85,7 @@ I will prepare the updated single HTML file.
     box-shadow: 0 0 8px var(--blue-gradient-2);
   }
 
-  /* Hero */
+
   .hero {
     position: relative;
     min-height: calc(100vh - 64px);
@@ -166,7 +149,6 @@ I will prepare the updated single HTML file.
     border-color: var(--blue-dark);
   }
 
-  /* Features section */
   section.features {
     padding: 6rem 1rem 8rem;
     background: rgba(255 255 255 / 0.05);
@@ -213,7 +195,7 @@ I will prepare the updated single HTML file.
     line-height: 1.4;
   }
 
-  /* Footer */
+  /* Footer but kinds weird??*/
   footer {
     text-align: center;
     padding: 2rem 1rem;
@@ -222,7 +204,7 @@ I will prepare the updated single HTML file.
     border-top: 1px solid rgba(255 255 255 / 0.12);
   }
 
-  /* Moving background shapes */
+  /* Moving background shapes but not working mabye?*/
   .shape {
     position: fixed;
     border-radius: 50%;
@@ -272,10 +254,10 @@ I will prepare the updated single HTML file.
     100% { transform: translateY(-20px) translateX(-10px) scale(1.08); }
   }
 
-  /* Responsive adjustments */
+  /* Responsive adjustments being gay */
   @media (max-width: 640px) {
     nav .nav-links {
-      display: none; /* Minimal mobile header */
+      display: none; 
     }
     .btn-group {
       flex-direction: column;
@@ -346,7 +328,7 @@ I will prepare the updated single HTML file.
       </article>
     </section>
 
-    <!-- Call to Action Buy Section -->
+    <!-- Call to Action Buy Section Should I Make Free?-->
     <section id="buy" class="container" style="text-align:center; padding-bottom: 6rem;">
       <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Own Breeze?</h2>
       <p style="max-width: 560px; margin: 0 auto 2rem; color: var(--text-light);">
