@@ -1,350 +1,317 @@
-`breeze-landing.html`
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Breeze - Roblox Cheat</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet" />
+<title>Breeze - Clean, Elegant UI</title>
 <style>
-  :root {
-    --blue-light: #4facfe;
-    --blue-dark: #00f2fe;
-    --blue-gradient-1: #2196f3;
-    --blue-gradient-2: #21cbf3;
-    --bg-gradient-start: #0b3d91;
-    --bg-gradient-end: #1cb5e0;
-    --text-white: #f0f8ff;
-    --text-light: #cce6ff;
-    --shadow-glow: rgba(33, 203, 243, 0.6);
-  }
-
+  /* Reset */
   *, *::before, *::after {
     box-sizing: border-box;
   }
-  body, html {
-    margin: 0; padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-    color: var(--text-white);
-    height: 100%;
-    overflow-x: hidden;
+
+  /* Root variables */
+  :root {
+    --color-bg: #ffffff;
+    --color-text-base: #374151; /* dark gray */
+    --color-text-muted: #6b7280; /* neutral gray */
+    --color-accent-black: #111827;
+    --color-card-bg: #f9fafb;
+    --color-card-shadow: rgba(107, 114, 128, 0.1);
+    --button-bg: #111827;
+    --button-text: #ffffff;
+    --button-hover-bg: #1f2937;
+    --logo-color: #111827;
+    --logo-glow-color: rgba(17, 24, 39, 0.3);
   }
+
+  body {
+    margin: 0;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background: var(--color-bg);
+    color: var(--color-text-base);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
   a {
-    color: inherit;
+    color: var(--color-accent-black);
     text-decoration: none;
-    transition: color 0.3s ease;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
   }
   a:hover, a:focus {
-    color: var(--blue-light);
+    color: var(--button-hover-bg);
     outline: none;
+    transform: scale(1.05);
   }
 
+  /* Container */
   .container {
     max-width: 1200px;
-    padding: 0 2rem;
     margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
+  /* Header */
   header {
     position: sticky;
     top: 0;
-    backdrop-filter: saturate(180%) blur(12px);
-    background: rgba(11, 61, 145, 0.7);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid #e5e7eb;
     z-index: 1000;
-    box-shadow: 0 2px 12px rgb(0 0 0 / 0.2);
   }
   nav {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    height: 64px;
+    align-items: center;
+    height: 4.5rem;
   }
   .logo {
-    font-weight: 700;
-    font-size: 1.6rem;
-    letter-spacing: 0.15em;
-    color: var(--text-white);
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--logo-color);
+    letter-spacing: 0.1em;
     user-select: none;
-    text-shadow: 0 0 10px var(--blue-light);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    display: inline-block;
+    filter: drop-shadow(0 0 4px rgba(17, 24, 39, 0.1));
+    animation: floatLogo 4s ease-in-out infinite;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
   }
+  .logo:hover, .logo:focus {
+    outline: none;
+    color: var(--button-hover-bg);
+    filter: drop-shadow(0 0 8px var(--button-hover-bg)) drop-shadow(0 0 20px var(--button-hover-bg));
+    transform: scale(1.15) translateY(-5px);
+  }
+  @keyframes floatLogo {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
   .nav-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   .nav-links a {
     font-weight: 600;
     font-size: 1rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    color: var(--color-text-muted);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1.5px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .nav-links a:hover,
-  .nav-links a:focus {
-    background: var(--blue-gradient-2);
-    box-shadow: 0 0 8px var(--blue-gradient-2);
+  .nav-links a:hover, .nav-links a:focus {
+    color: var(--color-accent-black);
+    border-color: var(--color-accent-black);
+    outline: none;
+    box-shadow: 0 6px 12px rgba(17, 24, 39, 0.1);
+    transform: scale(1.05) translateY(-2px);
   }
 
-
+  /* Hero Section */
   .hero {
-    position: relative;
-    min-height: calc(100vh - 64px);
+    padding-top: 6.5rem;
+    padding-bottom: 6.5rem;
+    text-align: center;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 1rem 6rem;
-    z-index: 1;
-  }
-  .hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.1;
-    text-shadow:
-      0 0 10px var(--blue-light),
-      0 0 15px var(--blue-dark);
-  }
-  .hero p {
-    margin: 1rem 0 2.5rem;
-    font-weight: 600;
-    font-size: 1.25rem;
-    color: var(--text-light);
-    max-width: 520px;
-    text-shadow: 0 0 8px rgba(33,203,243,0.5);
-  }
-  .btn-group {
-    display: flex;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
     gap: 1.5rem;
-    flex-wrap: wrap;
+  }
+  .hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--color-accent-black);
+    margin: 0;
+    border-radius: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .hero-subtext {
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+  .hero-buttons {
+    display: flex;
     justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
   }
   .btn {
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1.125rem;
-    padding: 0.75rem 2.5rem;
-    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 0.85rem 3rem;
+    border-radius: 0.75rem;
     border: none;
-    color: var(--text-white);
-    transition: all 0.3s ease;
-    box-shadow: 0 0 8px var(--blue-dark);
+    cursor: pointer;
     user-select: none;
-    background-image: linear-gradient(90deg, var(--blue-light), var(--blue-dark));
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    text-align: center;
   }
   .btn:hover, .btn:focus {
-    transform: scale(1.05);
-    box-shadow:
-      0 0 14px var(--blue-light),
-      0 0 20px var(--blue-dark);
+    background-color: var(--button-hover-bg);
     outline: none;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.2);
+    transform: scale(1.1) translateY(-3px);
+    color: var(--button-text);
   }
   .btn-secondary {
-    background: transparent;
-    border: 2px solid var(--text-white);
+    background-color: transparent;
+    color: var(--color-accent-black);
+    border: 2px solid var(--color-accent-black);
   }
   .btn-secondary:hover, .btn-secondary:focus {
-    background-image: linear-gradient(90deg, var(--blue-light), var(--blue-dark));
-    border-color: var(--blue-dark);
+    background-color: var(--color-accent-black);
+    color: var(--button-text);
   }
 
-  section.features {
-    padding: 6rem 1rem 8rem;
-    background: rgba(255 255 255 / 0.05);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 16px;
-  }
-  .feature-card {
-    background: rgba(0 0 0 / 0.25);
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 0 12px rgba(33, 203, 243, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* Buy Section */
+  section.buy {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    background: var(--color-card-bg);
+    border-radius: 0.75rem;
+    max-width: 720px;
+    margin: 4.5rem auto 5rem auto;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px var(--color-card-shadow);
   }
-  .feature-card:hover, .feature-card:focus-within {
-    transform: translateY(-8px);
-    box-shadow:
-      0 0 25px var(--blue-light),
-      0 0 35px var(--blue-dark);
-    outline: none;
-  }
-  .feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: var(--blue-light);
-    filter: drop-shadow(0 0 6px var(--blue-light));
-  }
-  .feature-title {
+  section.buy h2 {
+    font-size: 2.75rem;
     font-weight: 700;
-    font-size: 1.375rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-accent-black);
   }
-  .feature-desc {
+  section.buy p {
+    font-size: 1.25rem;
     font-weight: 500;
-    color: var(--text-light);
-    font-size: 1rem;
-    line-height: 1.4;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+  }
+  section.buy a.btn {
+    padding: 1rem 3.5rem;
+    font-size: 1.375rem;
   }
 
-  /* Footer but kinds weird??*/
+  /* Footer */
   footer {
+    background: var(--color-bg);
+    color: var(--color-text-muted);
     text-align: center;
-    padding: 2rem 1rem;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    border-top: 1px solid rgba(255 255 255 / 0.12);
+    padding: 3rem 1rem;
+    font-size: 1rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+    box-shadow: 0 -3px 12px var(--color-card-shadow);
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+  }
+  footer p {
+    margin: 0.25rem 0;
+  }
+  footer a {
+    color: var(--color-accent-black);
+    font-weight: 600;
+    text-decoration: underline;
+    border-radius: 0.25rem;
+    transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 0.15rem 0.3rem;
+    display: inline-block;
+  }
+  footer a:hover, footer a:focus {
+    color: var(--button-hover-bg);
+    outline: none;
+    box-shadow: 0 5px 15px rgba(17, 24, 39, 0.15);
+    transform: scale(1.05);
   }
 
-  /* Moving background shapes but not working mabye?*/
-  .shape {
-    position: fixed;
-    border-radius: 50%;
-    opacity: 0.15;
-    pointer-events: none;
-    filter: drop-shadow(0 0 10px var(--blue-gradient-1));
-    animation-timing-function: ease-in-out;
-  }
-  .shape1 {
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle at center, var(--blue-gradient-1), transparent 70%);
-    top: 20%;
-    left: 10%;
-    animation: float1 8s infinite alternate;
-    z-index: 0;
-  }
-  .shape2 {
-    width: 160px;
-    height: 160px;
-    background: radial-gradient(circle at center, var(--blue-gradient-2), transparent 70%);
-    bottom: 15%;
-    right: 15%;
-    animation: float2 11s infinite alternate;
-    z-index: 0;
-  }
-  .shape3 {
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle at center, var(--blue-light), transparent 70%);
-    top: 40%;
-    right: 30%;
-    animation: float3 13s infinite alternate;
-    z-index: 0;
-  }
-
-  @keyframes float1 {
-    0%   { transform: translateY(0) translateX(0) scale(1); }
-    100% { transform: translateY(-25px) translateX(15px) scale(1.1); }
-  }
-  @keyframes float2 {
-    0%   { transform: translateY(0) translateX(0) scale(1); }
-    100% { transform: translateY(30px) translateX(-15px) scale(1.05); }
-  }
-  @keyframes float3 {
-    0%   { transform: translateY(0) translateX(0) scale(1); }
-    100% { transform: translateY(-20px) translateX(-10px) scale(1.08); }
-  }
-
-  /* Responsive adjustments being gay */
-  @media (max-width: 640px) {
-    nav .nav-links {
-      display: none; 
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
     }
-    .btn-group {
+    nav {
+      height: 3.75rem;
+    }
+    .nav-links {
+      gap: 1rem;
+    }
+    .nav-links a {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.9rem;
+    }
+    .hero-buttons {
       flex-direction: column;
+      gap: 1rem;
     }
-    .btn {
-      width: 100%;
-      padding-left: 0;
-      padding-right: 0;
-    }
-    section.features {
-      grid-template-columns: 1fr;
-      margin-bottom: 3rem;
-      padding: 3rem 1rem 4rem;
+    section.buy {
+      margin: 3rem auto 4rem auto;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
   }
 </style>
 </head>
 <body>
-  <!-- Moving background shapes -->
-  <div class="shape shape1" aria-hidden="true"></div>
-  <div class="shape shape2" aria-hidden="true"></div>
-  <div class="shape shape3" aria-hidden="true"></div>
+<header role="banner">
+  <nav class="container" aria-label="Primary navigation">
+    <div class="logo" aria-label="Breeze brand" tabindex="0">Breeze</div>
+    <div class="nav-links" role="navigation" aria-label="Main menu">
+      <a href="#features" tabindex="0">Features</a>
+      <a href="#buy" tabindex="0">Buy Now</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </div>
+  </nav>
+</header>
 
-  <!-- Header -->
-  <header role="banner">
-    <nav class="container" aria-label="Primary navigation">
-      <div class="logo" aria-label="Breeze logo">BREEZE</div>
-      <div class="nav-links" role="navigation" aria-label="Main menu">
-        <a href="#features" tabindex="0">Features</a>
-        <a href="#buy" tabindex="0">Buy Now</a>
-        <a href="#contact" tabindex="0">Contact</a>
-      </div>
-    </nav>
-  </header>
+<main>
+  <section class="hero" role="main" aria-labelledby="hero-title">
+    <h1 id="hero-title" class="hero-title" tabindex="0">Breeze</h1>
+    <p class="hero-subtext" tabindex="0">
+      Discover a powerful, undetectable Roblox cheat designed to give you the edge you need to dominate the game.
+    </p>
+    <div class="hero-buttons">
+      <a href="features.html" class="btn btn-secondary" role="button" tabindex="0">Features</a>
+      <a href="#buy" class="btn" role="button" tabindex="0">Buy Now — $5.00</a>
+    </div>
+  </section>
 
-  <!-- Hero Section -->
-  <main>
-    <section class="hero" role="main" aria-labelledby="hero-title">
-      <h1 id="hero-title">Breeze – Your Ultimate Roblox Cheat</h1>
-      <p>Effortlessly glide through your game with powerful, undetectable features designed for champions.</p>
-      <div class="btn-group">
-        <a href="#buy" class="btn" role="button" tabindex="0">Get Breeze Now</a>
-        <a href="#features" class="btn btn-secondary" role="button" tabindex="0">Explore Features</a>
-      </div>
-    </section>
+  <section id="buy" class="buy container" aria-label="Purchase Breeze section">
+    <h2 tabindex="0">Ready to Own Breeze?</h2>
+    <p tabindex="0">
+      Purchase now and elevate your Roblox gameplay like never before.
+    </p>
+    <a href="#" class="btn" role="button" tabindex="0">Buy Now — $5.00</a>
+  </section>
+</main>
 
-    <!-- Features Section -->
-    <section id="features" class="features" aria-label="Features of Breeze Roblox cheat">
-      <article class="feature-card" tabindex="0">
-        <div class="feature-icon" aria-hidden="true">⚡</div>
-        <h2 class="feature-title">Smooth Aimbot</h2>
-        <p class="feature-desc">Precision targeting with natural aim movement to keep you undetected.</p>
-      </article>
-      <article class="feature-card" tabindex="0">
-        <div class="feature-icon" aria-hidden="true">🛡️</div>
-        <h2 class="feature-title">Advanced ESP</h2>
-        <p class="feature-desc">Visualize enemies and objects through walls with customizable overlays.</p>
-      </article>
-      <article class="feature-card" tabindex="0">
-        <div class="feature-icon" aria-hidden="true">🚀</div>
-        <h2 class="feature-title">Speed & Flight</h2>
-        <p class="feature-desc">Gain unprecedented speed and flight capabilities to dominate servers.</p>
-      </article>
-      <article class="feature-card" tabindex="0">
-        <div class="feature-icon" aria-hidden="true">🔒</div>
-        <h2 class="feature-title">Undetectable</h2>
-        <p class="feature-desc">State-of-the-art anti-cheat evasion ensuring your account safety.</p>
-      </article>
-    </section>
-
-    <!-- Call to Action Buy Section Should I Make Free?-->
-    <section id="buy" class="container" style="text-align:center; padding-bottom: 6rem;">
-      <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Own Breeze?</h2>
-      <p style="max-width: 560px; margin: 0 auto 2rem; color: var(--text-light);">
-        Purchase now and elevate your Roblox gameplay like never before.
-      </p>
-      <a href="#" class="btn" role="button" tabindex="0">Buy Now — $5.00</a>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer id="contact" aria-label="Contact Information">
-    <p>© 2024 Breeze. All Rights Reserved.</p>
-    <p>Contact us: <a href="mailto:support@breezecheat.com">support@breezecheat.com</a></p>
-  </footer>
+<footer id="contact" aria-label="Contact Information">
+  <p>© 2024 Breeze. All Rights Reserved.</p>
+  <p>
+    Contact us: <a href="mailto:support@breezecheat.com" tabindex="0">support@breezecheat.com</a>
+  </p>
+</footer>
 </body>
 </html>
-
-```
