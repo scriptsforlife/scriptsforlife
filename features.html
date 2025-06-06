@@ -3,42 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Breeze - Features Overview</title>
+<title>Breeze - Features</title>
 <style>
-  /* Reset and Root */
+  /* Reset */
   *, *::before, *::after {
     box-sizing: border-box;
   }
   :root {
-    --color-bg-gradient-start: #000000;
-    --color-bg-gradient-end: #2563eb;
-    --color-text-base: #f3f4f6;
-    --color-text-muted: #cbd5e1;
-    --color-accent-blue: #3b82f6;
-    --color-accent-blue-light: #60a5fa;
-    --color-card-bg: rgba(30, 41, 59, 0.75);
-    --color-card-shadow: rgba(59, 130, 246, 0.4);
-    --button-bg: #ffffff;
-    --button-text: #111827;
-    --button-hover-bg: #e0e7ff;
-    --logo-color: var(--color-accent-blue);
-    --logo-glow-color: rgba(59, 130, 246, 0.7);
+    --color-bg: #ffffff;
+    --color-text-base: #374151;
+    --color-text-muted: #6b7280;
+    --color-accent-black: #111827;
+    --color-card-bg: #f9fafb;
+    --color-card-shadow: rgba(107, 114, 128, 0.1);
+    --button-bg: #111827;
+    --button-text: #ffffff;
+    --button-hover-bg: #1f2937;
   }
-
   body {
     margin: 0;
-    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    background: linear-gradient(180deg, var(--color-bg-gradient-start), var(--color-bg-gradient-end));
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background: var(--color-bg);
     color: var(--color-text-base);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
-
   a {
-    color: var(--button-bg);
+    color: var(--color-accent-black);
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -48,24 +41,17 @@
     outline: none;
     transform: scale(1.05);
   }
-
-  /* Container */
   .container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    width: 100%;
+    padding: 2rem 1.5rem 4rem;
     box-sizing: border-box;
   }
-
-  /* Header */
   header {
     position: sticky;
     top: 0;
-    background-color: rgba(0,0,0,0.7);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-    backdrop-filter: saturate(150%) blur(8px);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid #e5e7eb;
     z-index: 1000;
   }
   nav {
@@ -73,27 +59,24 @@
     justify-content: space-between;
     align-items: center;
     height: 4.5rem;
+    padding: 0 1.5rem;
   }
   .logo {
     font-weight: 800;
-    font-size: 2rem;
-    color: var(--logo-color);
+    font-size: 2.5rem;
+    color: var(--color-accent-black);
     letter-spacing: 0.1em;
     user-select: none;
+    border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
-    display: inline-block;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.05));
     animation: floatLogo 4s ease-in-out infinite;
-    filter:
-      drop-shadow(0 0 10px var(--logo-glow-color))
-      drop-shadow(0 0 20px var(--logo-glow-color));
     transition: box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
   }
   .logo:hover, .logo:focus {
     outline: none;
     color: var(--button-hover-bg);
-    filter:
-      drop-shadow(0 0 15px var(--logo-glow-color))
-      drop-shadow(0 0 40px var(--logo-glow-color));
+    filter: drop-shadow(0 0 8px var(--button-hover-bg)) drop-shadow(0 0 20px var(--button-hover-bg));
     transform: scale(1.15) translateY(-5px);
   }
   @keyframes floatLogo {
@@ -104,11 +87,6 @@
       transform: translateY(-5px);
     }
   }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-  }
   .nav-links a {
     font-weight: 600;
     font-size: 1rem;
@@ -118,51 +96,36 @@
     border: 1.5px solid transparent;
     transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease,
       box-shadow 0.3s ease;
+    margin-left: 1rem;
   }
   .nav-links a:hover, .nav-links a:focus {
-    color: var(--button-bg);
-    border-color: var(--button-bg);
+    color: var(--color-accent-black);
+    border-color: var(--color-accent-black);
     outline: none;
-    box-shadow: 0 6px 12px rgba(17, 24, 39, 0.15);
+    box-shadow: 0 6px 12px rgba(17, 24, 39, 0.1);
     transform: scale(1.05) translateY(-2px);
   }
 
-  /* Main content */
-  main {
-    max-width: 1080px;
-    margin: 4rem auto 6rem auto;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-
-  h1.page-title {
+  main h1 {
     font-size: 3rem;
-    font-weight: 800;
-    color: var(--button-bg);
+    font-weight: 700;
+    color: var(--color-accent-black);
+    margin-bottom: 2rem;
     text-align: center;
-    margin: 0 0 1rem 0;
-    filter:
-      drop-shadow(0 0 6px var(--button-bg))
-      drop-shadow(0 0 12px var(--button-bg));
   }
-
-  /* Sections for each feature category */
   section.feature-list {
     background: var(--color-card-bg);
     border-radius: 0.75rem;
     padding: 2.5rem 2rem;
     box-shadow: 0 14px 40px var(--color-card-shadow);
+    margin-bottom: 2.5rem;
   }
-
   section.feature-list h2 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--color-text-base);
     margin-bottom: 1.5rem;
   }
-
   ul.features {
     list-style: none;
     margin: 0;
@@ -171,7 +134,6 @@
     grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
     gap: 1.5rem 2rem;
   }
-
   ul.features li {
     background: #fff;
     padding: 1.5rem;
@@ -187,24 +149,20 @@
     flex-direction: column;
     gap: 0.5rem;
   }
-
   ul.features li:hover, ul.features li:focus {
     box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
     outline: none;
     transform: translateY(-4px);
   }
-
   ul.features li p {
     font-weight: 400;
     font-size: 1rem;
     color: #6b7280;
     line-height: 1.5;
   }
-
-  /* Back button */
   .back-button {
     max-width: 200px;
-    margin: 0 auto 0.25rem auto;
+    margin: 0 auto 2rem auto;
     background-color: var(--button-bg);
     color: var(--button-text);
     font-weight: 700;
@@ -213,10 +171,11 @@
     text-align: center;
     cursor: pointer;
     user-select: none;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
-    display: inline-block;
+    display: block;
+    width: fit-content;
   }
   .back-button:hover, .back-button:focus {
     background-color: var(--button-hover-bg);
@@ -224,44 +183,12 @@
     box-shadow: 0 10px 28px rgba(59, 130, 246, 0.4);
     transform: scale(1.05);
   }
-
-  /* Footer */
-  footer {
-    background: rgba(0, 0, 0, 0.6);
-    color: var(--color-text-muted);
-    text-align: center;
-    padding: 2rem 1rem;
-    font-size: 1rem;
-    border-radius: 0 0 1rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto 2rem auto;
-  }
-  footer p {
-    margin: 0.25rem 0;
-  }
-  footer a {
-    color: var(--button-bg);
-    font-weight: 600;
-    text-decoration: underline;
-    border-radius: 0.25rem;
-    transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    padding: 0.15rem 0.3rem;
-    display: inline-block;
-  }
-  footer a:hover, footer a:focus {
-    color: var(--button-hover-bg);
-    outline: none;
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-    transform: scale(1.05);
-  }
-
   /* Responsive */
   @media (max-width: 768px) {
     main {
-      margin: 3rem auto 4rem auto;
-      padding: 0 1rem;
+      padding: 1rem;
     }
-    h1.page-title {
+    main h1 {
       font-size: 2.25rem;
     }
     ul.features {
@@ -270,6 +197,7 @@
     }
     .back-button {
       max-width: 100%;
+      margin-bottom: 1.5rem;
     }
   }
 </style>
@@ -277,19 +205,18 @@
 <body>
 <header role="banner">
   <nav class="container" aria-label="Primary navigation">
-    <a href="/" class="logo" aria-label="Breeze brand" tabindex="0">Breeze</a>
+    <a href="index.html" class="logo" aria-label="Breeze brand" tabindex="0">Breeze</a>
     <div class="nav-links" role="navigation" aria-label="Main menu">
-      <a href="/" tabindex="0">Home</a>
+      <a href="index.html" tabindex="0">Home</a>
     </div>
   </nav>
 </header>
 
-<main>
-  <h1 class="page-title" tabindex="0">Features Overview</h1>
+<main class="container" tabindex="0">
+  <h1>Features Overview</h1>
   
-  <a href="/" class="back-button" tabindex="0" aria-label="Back to homepage">← Back to Homepage</a>
+  <a href="index.html" class="back-button" tabindex="0" aria-label="Back to homepage">← Back to Homepage</a>
 
-  <!-- Combat Section -->
   <section id="combat" class="feature-list" aria-labelledby="combat-title" tabindex="0">
     <h2 id="combat-title">Combat</h2>
     <ul class="features">
@@ -308,7 +235,6 @@
     </ul>
   </section>
 
-  <!-- Blatant Section -->
   <section id="blatant" class="feature-list" aria-labelledby="blatant-title" tabindex="0">
     <h2 id="blatant-title">Blatant</h2>
     <ul class="features">
@@ -327,7 +253,6 @@
     </ul>
   </section>
 
-  <!-- Render Section -->
   <section id="render" class="feature-list" aria-labelledby="render-title" tabindex="0">
     <h2 id="render-title">Render</h2>
     <ul class="features">
@@ -346,7 +271,6 @@
     </ul>
   </section>
 
-  <!-- World Section -->
   <section id="world" class="feature-list" aria-labelledby="world-title" tabindex="0">
     <h2 id="world-title">World</h2>
     <ul class="features">
@@ -365,7 +289,6 @@
     </ul>
   </section>
 
-  <!-- Exploit Section -->
   <section id="exploit" class="feature-list" aria-labelledby="exploit-title" tabindex="0">
     <h2 id="exploit-title">Exploit</h2>
     <ul class="features">
@@ -384,7 +307,6 @@
     </ul>
   </section>
 
-  <!-- GUI Section -->
   <section id="gui" class="feature-list" aria-labelledby="gui-title" tabindex="0">
     <h2 id="gui-title">GUI</h2>
     <ul class="features">
@@ -402,16 +324,14 @@
       </li>
     </ul>
   </section>
-  
+
 </main>
 
 <footer id="contact" aria-label="Contact Information">
   <p>© 2024 Breeze. All Rights Reserved.</p>
   <p>
-    Contact us:
-    <a href="mailto:support@breezecheat.com" tabindex="0">support@breezecheat.com</a>
+    Contact us: <a href="mailto:support@breezecheat.com" tabindex="0">support@breezecheat.com</a>
   </p>
 </footer>
 </body>
 </html>
-
